@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const { logger } = require('@librechat/data-schemas');
 const { getFirebaseStorage, deleteRagFile } = require('@librechat/api');
 const { ref, uploadBytes, getDownloadURL, deleteObject } = require('firebase/storage');
-const { getBufferMetadata } = require('~/server/utils');
+const { getBufferMetadata } = require('~/server/utils/index.js');
 
 /**
  * Deletes a file from Firebase Storage.

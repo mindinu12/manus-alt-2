@@ -75,6 +75,27 @@ export function createEndpointsConfigService(deps: EndpointsConfigDeps) {
       };
     }
 
+          // Check if this endpoint is in the allowed providers list
+          const isAllowedProvider = allowedProviders.some((provider) => {
+            if (typeof provider === 'string') {
+              return provider.toLowerCase() === endpointName.toLowerCase();
+            }
+            return false;
+          });
+
+          if (isAllowedProvider) {
+            const endpointConfig = mergedConfig[endpointName];
+            if (endpointConfig && typeof endpointConfig === 'object') {
+              mergedConfig[endpointName] = {
+                ...endpointConfig,
+                capabilities: [...(endpointConfig.capabilities || []), ...capabilities],
+              };
+            }
+          }
+        }
+      }
+    }
+
     if (
       mergedConfig[EModelEndpoint.azureAssistants] &&
       appConfig?.endpoints?.[EModelEndpoint.azureAssistants]

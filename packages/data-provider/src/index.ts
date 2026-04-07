@@ -7,6 +7,8 @@ export * from './file-config';
 export * from './messages';
 /* artifacts  */
 export * from './artifacts';
+/* skills */
+export * from './skills';
 /* schema helpers  */
 export * from './parsers';
 /* custom/dynamic configurations  */

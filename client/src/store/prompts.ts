@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { atomWithLocalStorage } from '~/store/utils';
+import { atomWithLocalStorage } from './utils';
 import { PromptsEditorMode } from '~/common';
 
 // Static atoms without localStorage

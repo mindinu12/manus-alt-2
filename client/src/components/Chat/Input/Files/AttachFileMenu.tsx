@@ -103,7 +103,11 @@ const AttachFileMenu = ({
    * Allow defining agent capabilities on a per-endpoint basis
    * Use definition for agents endpoint for ephemeral agents
    * */
-  const capabilities = useAgentCapabilities(agentsConfig?.capabilities ?? defaultAgentCapabilities);
+  const capabilities = useAgentCapabilities({
+    capabilities: agentsConfig?.capabilities ?? defaultAgentCapabilities,
+    endpoint: conversation?.endpointType ?? conversation?.endpoint,
+    agentsConfig,
+  });
 
   const { fileSearchAllowedByAgent, codeAllowedByAgent, provider } = useAgentToolPermissions(
     agentId,

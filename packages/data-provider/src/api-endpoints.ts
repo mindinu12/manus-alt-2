@@ -194,6 +194,9 @@ export const resendVerificationEmail = () => `${BASE_URL}/api/user/verify/resend
 
 export const plugins = () => `${BASE_URL}/api/plugins`;
 
+export const skills = () => `${BASE_URL}/api/skills`;
+export const skillsGenerate = () => `${BASE_URL}/api/skills/generate`;
+
 export const mcpReinitialize = (serverName: string) =>
   `${BASE_URL}/api/mcp/${serverName}/reinitialize`;
 export const mcpConnectionStatus = () => `${BASE_URL}/api/mcp/connection/status`;

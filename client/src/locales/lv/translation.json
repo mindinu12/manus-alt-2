@@ -1542,6 +1542,7 @@
   "com_ui_version_var": "Versija {{0}}",
   "com_ui_versions": "Versijas",
   "com_ui_via_server": "vietnē {{0}}",
+  "com_ui_view": "View",
   "com_ui_view_memory": "Skatīt atmiņu",
   "com_ui_web_search": "Meklēšana tīmeklī",
   "com_ui_web_search_cohere_key": "Ievadiet Cohere API atslēgu",

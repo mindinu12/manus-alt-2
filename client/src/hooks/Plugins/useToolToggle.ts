@@ -11,7 +11,7 @@ import { ephemeralAgentByConvoId } from '~/store';
 
 type ToolValue = boolean | string;
 
-interface UseToolToggleOptions {
+export interface UseToolToggleOptions {
   conversationId?: string | null;
   storageContextKey?: string;
   toolKey: string;

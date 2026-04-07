@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 import { SettingsViews, LocalStorageKeys } from 'librechat-data-provider';
-import { atomWithLocalStorage } from '~/store/utils';
+import { atomWithLocalStorage } from './utils';
 import type { TOptionSettings } from '~/common';
 
 // Static atoms without localStorage

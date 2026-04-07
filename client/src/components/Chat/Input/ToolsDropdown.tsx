@@ -7,11 +7,14 @@ import {
   AuthType,
   Permissions,
   ArtifactModes,
+  SkillModes,
   PermissionTypes,
   defaultAgentCapabilities,
 } from 'librechat-data-provider';
 import { useLocalize, useHasAccess, useAgentCapabilities } from '~/hooks';
+import { useChatContext } from '~/Providers';
 import ArtifactsSubMenu from '~/components/Chat/Input/ArtifactsSubMenu';
+import SkillsSubMenu from '~/components/Chat/Input/SkillsSubMenu';
 import MCPSubMenu from '~/components/Chat/Input/MCPSubMenu';
 import { useGetStartupConfig } from '~/data-provider';
 import { useBadgeRowContext } from '~/Providers';
@@ -28,6 +31,7 @@ const ToolsDropdown = ({ disabled }: ToolsDropdownProps) => {
   const {
     webSearch,
     artifacts,
+    skills,
     fileSearch,
     agentsConfig,
     mcpServerManager,
@@ -36,9 +40,14 @@ const ToolsDropdown = ({ disabled }: ToolsDropdownProps) => {
     searchApiKeyForm,
   } = useBadgeRowContext();
   const { data: startupConfig } = useGetStartupConfig();
+  const { conversation } = useChatContext();
 
-  const { codeEnabled, webSearchEnabled, artifactsEnabled, fileSearchEnabled } =
-    useAgentCapabilities(agentsConfig?.capabilities ?? defaultAgentCapabilities);
+  const { codeEnabled, webSearchEnabled, artifactsEnabled, skillsEnabled, fileSearchEnabled } =
+    useAgentCapabilities({
+      capabilities: agentsConfig?.capabilities ?? defaultAgentCapabilities,
+      endpoint: conversation?.endpointType ?? conversation?.endpoint,
+      agentsConfig,
+    });
 
   const { setIsDialogOpen: setIsCodeDialogOpen, menuTriggerRef: codeMenuTriggerRef } =
     codeApiKeyForm;
@@ -56,6 +65,7 @@ const ToolsDropdown = ({ disabled }: ToolsDropdownProps) => {
   } = codeInterpreter;
   const { isPinned: isFileSearchPinned, setIsPinned: setIsFileSearchPinned } = fileSearch;
   const { isPinned: isArtifactsPinned, setIsPinned: setIsArtifactsPinned } = artifacts;
+  const { isPinned: isSkillsPinned, setIsPinned: setIsSkillsPinned } = skills;
 
   const canUseWebSearch = useHasAccess({
     permissionType: PermissionTypes.WEB_SEARCH,
@@ -111,6 +121,15 @@ const ToolsDropdown = ({ disabled }: ToolsDropdownProps) => {
       artifacts.debouncedChange({ value: '' });
     }
   }, [artifacts]);
+
+  const handleSkillsToggle = useCallback(() => {
+    const currentState = skills.toggleState;
+    if (!currentState || currentState === '') {
+      skills.debouncedChange({ value: SkillModes.DEFAULT });
+    } else {
+      skills.debouncedChange({ value: '' });
+    }
+  }, [skills]);
 
   const handleShadcnToggle = useCallback(() => {
     const currentState = artifacts.toggleState;
@@ -286,6 +305,21 @@ const ToolsDropdown = ({ disabled }: ToolsDropdownProps) => {
           handleArtifactsToggle={handleArtifactsToggle}
           handleShadcnToggle={handleShadcnToggle}
           handleCustomToggle={handleCustomToggle}
+        />
+      ),
+    });
+  }
+
+  if (skillsEnabled) {
+    dropdownItems.push({
+      hideOnClick: false,
+      render: (props) => (
+        <SkillsSubMenu
+          {...props}
+          isSkillsPinned={isSkillsPinned}
+          setIsSkillsPinned={setIsSkillsPinned}
+          skillsMode={skills.toggleState as string}
+          handleSkillsToggle={handleSkillsToggle}
         />
       ),
     });

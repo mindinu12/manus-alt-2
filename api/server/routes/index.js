@@ -1,4 +1,4 @@
-const accessPermissions = require('./accessPermissions');
+// const accessPermissions = require('./accessPermissions');
 const assistants = require('./assistants');
 const categories = require('./categories');
 const adminAuth = require('./admin/auth');
@@ -21,7 +21,7 @@ const search = require('./search');
 const models = require('./models');
 const convos = require('./convos');
 const config = require('./config');
-const agents = require('./agents');
+// const agents = require('./agents');
 const roles = require('./roles');
 const oauth = require('./oauth');
 const files = require('./files');
@@ -31,6 +31,7 @@ const auth = require('./auth');
 const keys = require('./keys');
 const user = require('./user');
 const mcp = require('./mcp');
+const skills = require('./skills');
 
 module.exports = {
   mcp,
@@ -49,14 +50,13 @@ module.exports = {
   oauth,
   files,
   share,
-  banner,
-  agents,
   convos,
-  search,
   config,
   models,
-  prompts,
+  search,
+  banner,
   actions,
+  prompts,
   presets,
   balance,
   messages,
@@ -65,5 +65,6 @@ module.exports = {
   assistants,
   categories,
   staticRoute,
-  accessPermissions,
+  // accessPermissions,
+  skills,
 };

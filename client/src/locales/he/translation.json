@@ -1211,6 +1211,7 @@
   "com_ui_verify": "אמת",
   "com_ui_version_var": "גרסה {{0}}",
   "com_ui_versions": "גרסה",
+  "com_ui_view": "View",
   "com_ui_view_memory": "הצג זיכרון",
   "com_ui_web_search": "חיפוש ברשת",
   "com_ui_web_search_cohere_key": "הכנס מפתח API של Cohere",

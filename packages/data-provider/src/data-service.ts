@@ -174,6 +174,16 @@ export const updateUserPlugins = (payload: t.TUpdateUserPlugins) => {
   return request.post(endpoints.userPlugins(), payload);
 };
 
+export const getSkills = (): Promise<t.SkillsResponse> => {
+  return request.get(endpoints.skills());
+};
+
+export const generateSkillsPrompt = (
+  payload: t.GenerateSkillsPromptRequest,
+): Promise<t.GenerateSkillsPromptResponse> => {
+  return request.post(endpoints.skillsGenerate(), payload);
+};
+
 export const reinitializeMCPServer = (serverName: string) => {
   return request.post(endpoints.mcpReinitialize(serverName));
 };

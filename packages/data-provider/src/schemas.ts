@@ -751,6 +751,8 @@ export const tConversationSchema = z.object({
   stream: z.boolean().optional(),
   /* artifacts */
   artifacts: z.string().optional(),
+  /* skills */
+  skills: z.string().optional(),
   /* google */
   context: z.string().nullable().optional(),
   examples: z.array(tExampleSchema).optional(),

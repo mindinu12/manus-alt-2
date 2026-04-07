@@ -1188,6 +1188,7 @@
   "com_ui_verify": "Перевірити",
   "com_ui_version_var": "Версія {{0}}",
   "com_ui_versions": "Версії",
+  "com_ui_view": "View",
   "com_ui_view_memory": "Переглянути пам'ять",
   "com_ui_web_search": "Веб-пошук",
   "com_ui_web_search_cohere_key": "Введіть API-ключ Cohere",

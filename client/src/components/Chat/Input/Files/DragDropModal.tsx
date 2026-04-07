@@ -47,7 +47,11 @@ const DragDropModal = ({ onOptionSelect, setShowModal, files, isVisible }: DragD
    * Allow defining agent capabilities on a per-endpoint basis
    * Use definition for agents endpoint for ephemeral agents
    * */
-  const capabilities = useAgentCapabilities(agentsConfig?.capabilities ?? defaultAgentCapabilities);
+  const capabilities = useAgentCapabilities({
+    capabilities: agentsConfig?.capabilities ?? defaultAgentCapabilities,
+    endpoint: endpointType ?? endpoint,
+    agentsConfig,
+  });
   const { conversationId, agentId, endpoint, endpointType, useResponsesApi } = useDragDropContext();
   const ephemeralAgent = useRecoilValue(ephemeralAgentByConvoId(conversationId ?? ''));
   const { fileSearchAllowedByAgent, codeAllowedByAgent, provider } = useAgentToolPermissions(

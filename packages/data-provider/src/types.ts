@@ -101,6 +101,7 @@ export type TEphemeralAgent = {
   file_search?: boolean;
   execute_code?: boolean;
   artifacts?: string;
+  skills?: string;
 };
 
 export type TPayload = Partial<TMessage> &
@@ -675,3 +676,15 @@ export type TBalanceResponse = {
   lastRefill?: Date;
   refillAmount?: number;
 };
+
+export interface GenerateSkillsPromptRequest {
+  enabledSkills: string[];
+}
+
+export interface GenerateSkillsPromptResponse {
+  prompt: string;
+}
+
+export interface SkillsResponse {
+  skills: string[];
+}

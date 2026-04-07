@@ -1016,6 +1016,7 @@
   "com_ui_verify": "확인",
   "com_ui_version_var": "버전 {{0}}",
   "com_ui_versions": "버전",
+  "com_ui_view": "View",
   "com_ui_view_memory": "메모리 보기",
   "com_ui_web_search": "웹 검색",
   "com_ui_web_search_cohere_key": "Cohere API 키 입력",
